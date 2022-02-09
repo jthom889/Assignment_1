@@ -112,6 +112,10 @@ public class AppMenu {
 		return name;
 	}
 	
+	public void playerInfo(Player ply) {
+		
+		System.out.println(ply.playerInfo());
+		}
 
 	}
 	

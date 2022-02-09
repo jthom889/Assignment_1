@@ -60,8 +60,10 @@ public class GameManager {
 				else if(option.equals("S")|| option.equals("s")) 
 					search();
 				
-				else if(option.equals("E")|| option.equals("e")) 
+				else if(option.equals("E")|| option.equals("e")) {
 					exit();
+					break;
+				}
 		 }
 		
 	}
@@ -89,7 +91,7 @@ public class GameManager {
 		
 		else if(option.equals("N")|| option.equals("n")) {
 			ply = nameOfPlayer();
-			ply.playerInfo();
+			appMen.playerInfo(ply);
 		}
 			
 		else if(option.equals("B")|| option.equals("b")) {

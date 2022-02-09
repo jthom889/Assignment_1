@@ -94,21 +94,29 @@ public class Player {
 	 * @return formatted output
 	 */
 	public String format() {
-		return name + "," + balance + "," + wins;
+		return name + "," + balance + "," + wins + "\n";
 	}
 	
 	/**
 	 * the output that is used for the player search
+	 * @return 
 	 */
-	public void playerInfo() {
+	public String playerInfo() {
 		String space = " ";
-				
-		System.out.println("+==============+==============+==============+");
-		System.out.println("|NAME          |# WINS        |BALANCE       +");
-		System.out.println("+==============+==============+==============+");
-		System.out.println("|" + name + space.repeat(name.length() - 14) + "|"+ wins + space.repeat(String.valueOf(wins).length()-14)
-				+ balance + space.repeat(String.valueOf(balance).length()-14));
-		System.out.println("+==============+==============+==============+");
+		String name = getName();
+		double balance = getBalance();
+		int wins = getWins();		
+		
+		//System.out.println
+		return "+==============+==============+==============+\n" + 
+		"|NAME          |# WINS        |BALANCE       |\n" + "+==============+==============+==============+\n" 
+				+ "|" + name + space.repeat(14 - name.length()) + "|"+ wins + space.repeat(14 - String.valueOf(wins).length())
+				+ "|" + "$" + balance + space.repeat(13 - String.valueOf(balance).length()) + "|\n" +
+				"+==============+==============+==============+";
+		//System.out.println();
+		//System.out.println();
+		//System.out.println();
+		//System.out.println();
 	}
 	
 }
