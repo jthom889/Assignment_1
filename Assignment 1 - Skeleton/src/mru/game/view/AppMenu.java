@@ -1,18 +1,32 @@
 package mru.game.view;
 import java.util.Scanner;
 
+import mru.game.model.Player;
 
+/**
+ * this class provides the methods that sort out parts of the menus 
+ * @author Jonah Thompson
+ *
+ */
 public class AppMenu {
+	
+	Scanner keyboard;
+	Player p;
 
 	/**
 	 * This class will be used to show the menus and sub menus to the user
 	 * It also prompts the user for the inputs and validates them 
 	 */
 	
+	public AppMenu() {
+		keyboard = new Scanner(System.in);
+		p = new Player("", 0, 0);
+	}
+	
 	/**
 	 * this method will print the main menu portion of the interface
 	 */
-	public void mainMenu() {
+	public String mainMenu() {
 		
 		//prints the prompt message for the user
 		System.out.println("Select one of these options:");
@@ -22,55 +36,36 @@ public class AppMenu {
 		System.out.printf("\t (E) Exit\n ");
 		System.out.println();
 		System.out.println("Enter a choice: ");
-		
-		
-	}
-	
-	/**
-	 * this method will call the mainMenu method and
-	 * validate the users input
-	 * @return the users valid input c1
-	 */
-	public String mainInput() {
-		
-		//creates scanner object
-		Scanner keyboard = new Scanner(System.in);
-		
-		//declare return variable
-		String c1 = "";
-		
+
+		String option;
 		
 		//loop that takes users choice and makes sure choice is valid
 		while(true) {
-			
-			//calls main menu
-			mainMenu();
-			
-			//saves user input
-			c1 = keyboard.next();
-			
+					
+			option = keyboard.nextLine();
+					
 			//if cases for each of the acceptable letters
-			if(c1.equals("P")|| c1.equals("p")) 
+			if(option.equals("P")|| option.equals("p")) 
+				break;
+					
+			else if(option.equals("S")|| option.equals("s")) 
 				break;
 			
-			else if(c1.equals("S")|| c1.equals("s")) 
-				break;
-			
-			else if(c1.equals("E")|| c1.equals("e")) 
+			else if(option.equals("E")|| option.equals("e")) 
 				break;
 			
 			//else case if the users input isn't valid
 			else
-				System.out.println("Please enter a valid character");
-			
+				System.out.println("Please enter a valid character");		
 		}
-		return c1;
+		return option;
 	}
+	
 	
 	/**
 	 * this method prints the search menu of the interface
 	 */
-	public void searchMenu() {
+	public String searchMenu() {
 		
 		//prints the prompt message for the user
 		//prints the prompt message for the user
@@ -82,47 +77,43 @@ public class AppMenu {
 		System.out.println();
 		System.out.println("Enter a choice: ");
 		
-	}
-	
-	/**
-	 * this method will call the search method and 
-	 * accept and validate the users input for that section
-	 * @return the users valid input c2
-	 */
-	public String searchInput() {
-		
-		//creates scanner object
-		Scanner keyboard = new Scanner(System.in);
-		
-		//declare return variable
-		String c2 = "";
-		
+		String option;
 		
 		//loop that takes users choice and makes sure choice is valid
 		while(true) {
-			
-			//calls search menu
-			searchMenu();
-			
-			//saves user input
-			c2 = keyboard.next();
-			
+					
+			option = keyboard.nextLine();
+				
 			//if cases for each of the acceptable letters
-			if(c2.equals("T")|| c2.equals("t")) 
+			if(option.equals("T")|| option.equals("t")) 
 				break;
 			
-			else if(c2.equals("N")|| c2.equals("n")) 
+			else if(option.equals("N")|| option.equals("n")) 
 				break;
-			
-			else if(c2.equals("B")|| c2.equals("b")) 
+				
+			else if(option.equals("B")|| option.equals("b")) 
 				break;
-			
+					
 			//else case if the users input isn't valid
 			else
 				System.out.println("Please enter a valid character");
-			
 		}
-		return c2;
+		
+		return option;
+	}
+
+	/**
+	 * prompts the user for name
+	 * @return the name the user inputs
+	 */
+	public String promptName() {
+		System.out.print("Enter a name here: ");
+		String name = keyboard.nextLine();
+		return name;
 	}
 	
-}
+
+	}
+	
+	
+
