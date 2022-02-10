@@ -29,6 +29,7 @@ public class GameManager {
 	private final String FILE_PATH = "res/CasinoInfo.txt";
 	ArrayList<Player> players;
 	AppMenu appMen; 
+	Scanner keyboard;
 	
 	/**
 	 * game manager constructor
@@ -38,6 +39,7 @@ public class GameManager {
 		
 		players = new ArrayList<Player>();
 		appMen = new AppMenu();
+		keyboard = new Scanner(System.in);
 		loadData();
 		launchApplication();
 		
@@ -128,8 +130,57 @@ public class GameManager {
 	 * this method sets up the top player UI
 	 */
 	public void topPlayer() {
-	
 		
+		//declare variables
+		int highWin = 0;
+		int highWin2 = 0;
+		String nameHigh = null;
+		String nameHigh2 = null;
+		String space = " ";
+		
+	
+		//sort through each player to determine the top player
+		for(Player p: players) {
+			
+			//determine if this player is the top player and setting their values
+			if(p.getWins() > highWin) {				
+				
+				//declaring the  highest players variables
+				nameHigh = p.getName();
+				highWin = p.getWins();
+			}
+		}
+		
+		//loop to determine the second highest player
+		for(Player p: players) {
+			
+			//sorts out the second highest player
+			if(p.getWins() > highWin2 && p.getWins() < highWin) {
+				
+				//declaring the second top users variables
+				nameHigh2 = p.getName();
+				highWin2 = p.getWins();
+				
+			}
+			
+		}
+		
+		//printing the formatted output
+		System.out.println("            - TOP PLAYERS -");
+		System.out.println("+==================+==================+");
+		System.out.println("|NAME              |# WINS            |");
+		System.out.println("+==================+==================+");
+		System.out.println( "|" +  nameHigh + space.repeat(18 - nameHigh.length())+ "|" + highWin + 
+				space.repeat(18 - String.valueOf(highWin).length())+"|");
+		System.out.println("+==================+==================+");
+		System.out.println("|" +  nameHigh2 + space.repeat(18 - nameHigh2.length())+ "|" + highWin2 + 
+				space.repeat(18 - String.valueOf(highWin2).length())+"|");
+		System.out.println("+==================+==================+");
+		System.out.println("");
+		System.out.println("Press \"Enter\" to continue... ");
+		
+		//make it so that the user can look at the table before returning to the menu
+		keyboard.nextLine();
 	}
 
 	/**
