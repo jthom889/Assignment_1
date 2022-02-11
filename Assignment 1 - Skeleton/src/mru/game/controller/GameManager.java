@@ -106,7 +106,7 @@ public class GameManager {
 
 	/**
 	 * this method makes the name search sub menu
-	 * @return
+	 * @return the information of player p
 	 */
 	public Player nameOfPlayer() {
 	

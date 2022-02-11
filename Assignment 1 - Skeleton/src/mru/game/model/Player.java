@@ -82,14 +82,6 @@ public class Player {
 	}
 	
 	/**
-	 * to string method
-	 * @return a string output
-	 */
-	public String toString() {
-		return "Name: " + name + "Balance: " + balance + "Number of wins: " + wins;
-	}
-	
-	/**
 	 * to string method that returns a formatted return for the file
 	 * @return formatted output
 	 */
@@ -99,7 +91,7 @@ public class Player {
 	
 	/**
 	 * the output that is used for the player search
-	 * @return 
+	 * @return the formatted output to be printed
 	 */
 	public String playerInfo() {
 		String space = " ";
@@ -107,16 +99,12 @@ public class Player {
 		double balance = getBalance();
 		int wins = getWins();		
 		
-		//System.out.println
+		
 		return "+==============+==============+==============+\n" + 
 		"|NAME          |# WINS        |BALANCE       |\n" + "+==============+==============+==============+\n" 
 				+ "|" + name + space.repeat(14 - name.length()) + "|"+ wins + space.repeat(14 - String.valueOf(wins).length())
 				+ "|" + "$" + balance + space.repeat(13 - String.valueOf(balance).length()) + "|\n" +
 				"+==============+==============+==============+";
-		//System.out.println();
-		//System.out.println();
-		//System.out.println();
-		//System.out.println();
 	}
 	
 }

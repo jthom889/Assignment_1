@@ -25,6 +25,7 @@ public class AppMenu {
 	
 	/**
 	 * this method will print the main menu portion of the interface
+	 * @return option from the user
 	 */
 	public String mainMenu() {
 		
@@ -64,6 +65,7 @@ public class AppMenu {
 	
 	/**
 	 * this method prints the search menu of the interface
+	 * @return option from the user
 	 */
 	public String searchMenu() {
 		
@@ -112,6 +114,11 @@ public class AppMenu {
 		return name;
 	}
 	
+	/**
+	 * this method prints the info of the player formatted to the 
+	 * playerInfo method
+	 * @param ply
+	 */
 	public void playerInfo(Player ply) {
 		
 		System.out.println(ply.playerInfo());
