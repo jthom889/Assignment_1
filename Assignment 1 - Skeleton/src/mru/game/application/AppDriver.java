@@ -4,11 +4,6 @@ import mru.game.controller.GameManager;
 
 public class AppDriver {
 
-	/**
-	 * this menu will run the Punto Banco game
-	 * @param args
-	 * @throws Exception
-	 */
 	public static void main(String[] args) throws Exception {
 		
 		// This is the starting point of the project!
