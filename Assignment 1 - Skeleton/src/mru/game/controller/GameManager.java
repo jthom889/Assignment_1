@@ -27,6 +27,7 @@ public class GameManager {
 	 */
 
 	private final String FILE_PATH = "res/CasinoInfo.txt";
+	
 	ArrayList<Player> players;
 	AppMenu appMen; 
 	Scanner keyboard;
@@ -72,9 +73,55 @@ public class GameManager {
 
 	/**
 	 * the method that starts the game from the main menu
+	 * @throws FileNotFoundException 
 	 */
-	private void playGame() {
+	public void playGame() throws FileNotFoundException {
 		
+		//Player ply = null;
+		//identify if player already exists
+		//String playerName = appMen.identifyPlayer();
+		//ply = playerIdentity(playerName);
+		
+		int betNum = 0;
+		int bet = 0;
+		int balance = 100;
+		int winNum = 0;
+		boolean betLoop = false;
+		
+		PuntoBancoGame pg = new PuntoBancoGame();
+		String name = appMen.promptName();
+		nameVerification(name, balance);
+		
+		String option = appMen.betMenu();
+		if(option.equals("P")||option.equals("p")){
+				betNum = 1;
+		}
+		else if(option.equals("B")||option.equals("b")) {
+			betNum = 3;
+		}
+		else if(option.equals("T")||option.equals("t")) {
+			betNum = 2;
+		}
+		
+		while(!betLoop) {
+			System.out.println("How much do you want to bet this round?");
+			bet = keyboard.nextInt();
+			if(bet > balance) {
+				System.out.println("You cannot bet more than you own!");
+			}
+			else if(bet < 0) {
+				System.out.println("Your bet cannot be a negative number!");
+			}
+			else if(bet == 0) {
+				System.out.println("Your bet must be higher than zero!");
+			}
+			else if(bet > 0 && bet <= balance) {
+				betLoop=true;
+				//keyboard.close();
+			}
+		}
+		
+		pg.runGame(betNum, bet, balance, winNum);
 		
 	}
 
@@ -100,13 +147,11 @@ public class GameManager {
 			
 		}
 			
-		
-		
 	}
 
 	/**
 	 * this method makes the name search sub menu
-	 * @return the information of player p
+	 * @return
 	 */
 	public Player nameOfPlayer() {
 	
@@ -122,10 +167,10 @@ public class GameManager {
 				break;
 			}
 		}
-		return ply;
-		
+		return ply;	
 	}
-
+	
+	
 	/**
 	 * this method sets up the top player UI
 	 */
@@ -236,7 +281,15 @@ public class GameManager {
 		fileReader.close();
 	}
 	
-	
+	public void nameVerification (String name, int balance) {
+		String space = " ";
+		String welc = "Welcome back "+(name.toUpperCase());
+		String showBal = "Your balance is: "+balance+"$" ;
+		System.out.println("******************************************************************");
+		System.out.println( "  ***"+space.repeat(22 - welc.length()) +welc +space.repeat(22 - welc.length())+ "---"+ space.repeat
+				(24 - String.valueOf(showBal).length()) + showBal + space.repeat(24 - String.valueOf(showBal).length())+"***");
+		System.out.println("******************************************************************");
+	}
 	
 
 }
