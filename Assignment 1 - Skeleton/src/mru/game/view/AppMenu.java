@@ -25,7 +25,6 @@ public class AppMenu {
 	
 	/**
 	 * this method will print the main menu portion of the interface
-	 * @return option from the user
 	 */
 	public String mainMenu() {
 		
@@ -65,7 +64,6 @@ public class AppMenu {
 	
 	/**
 	 * this method prints the search menu of the interface
-	 * @return option from the user
 	 */
 	public String searchMenu() {
 		
@@ -103,28 +101,73 @@ public class AppMenu {
 		
 		return option;
 	}
-
+	
+	/**
+	 * this method prints the search menu of the interface
+	 */
+	public String betMenu() {
+		
+		//prints the prompt message for the user
+		//prints the prompt message for the user
+		System.out.println("Who do you wish to bet on:");
+		System.out.println();
+		System.out.printf("\t (P) Player Wins\n ");
+		System.out.printf("\t (B) Banker Wins\n ");
+		System.out.printf("\t (T) Tie Game\n ");
+		System.out.println();
+		System.out.println("Enter a choice: ");
+		
+		String option;
+		
+		//loop that takes users choice and makes sure choice is valid
+		while(true) {
+					
+			option = keyboard.nextLine();
+				
+			//if cases for each of the acceptable letters
+			if(option.equals("P")|| option.equals("p")) 
+				break;
+			
+			else if(option.equals("B")|| option.equals("b")) 
+				break;
+				
+			else if(option.equals("T")|| option.equals("t")) 
+				break;
+					
+			//else case if the users input isn't valid
+			else
+				System.out.println("Please enter a valid character");
+		}
+		
+		return option;
+	}
+	
 	/**
 	 * prompts the user for name
 	 * @return the name the user inputs
 	 */
 	public String promptName() {
-		System.out.print("Enter a name here: ");
+		System.out.print("What is your name? ");
 		String name = keyboard.nextLine();
 		return name;
 	}
 	
-	/**
-	 * this method prints the info of the player formatted to the 
-	 * playerInfo method
-	 * @param ply
-	 */
 	public void playerInfo(Player ply) {
 		
 		System.out.println(ply.playerInfo());
 		}
 
+	/**
+	 * identifies the player's name before starting game
+	 * @return the name of the player
+	 */
+	public String identifyPlayer() {
+		System.out.print("What is the player's name?");
+		String name = keyboard.nextLine();
+		return name;
 	}
+	
+}
 	
 	
 
